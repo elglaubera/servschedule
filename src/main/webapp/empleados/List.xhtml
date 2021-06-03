@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <!-- Bootstrap -->
+        <h:outputStylesheet name="vendors/bootstrap/dist/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="assets/vendor/bootstrap/css/bootstrap.min.css" />
+        <h:outputStylesheet name="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css" />
+        <!-- Font Awesome -->
+        <h:outputStylesheet name="vendors/font-awesome/css/font-awesome.min.css"/>
+        <h:outputStylesheet name="assets/vendor/fonts/circular-std/style.css" />
+        <h:outputStylesheet name="assets/vendor/fonts/fontawesome/css/fontawesome-all.css" />
+        <!-- NProgress -->
+        <h:outputStylesheet name="vendors/nprogress/nprogress.css"/>
+        <!-- iCheck -->
+        <h:outputStylesheet name="vendors/iCheck/skins/flat/green.css"/>
+        <!-- Datatables -->
+        <h:outputStylesheet name="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" />
+        <h:outputStylesheet name="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" />
+        <h:outputStylesheet name="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" />
+        <h:outputStylesheet name="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" />
+        <h:outputStylesheet name="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" />
+        <!-- Custom Theme Style -->
+        <h:outputStylesheet name="build/css/custom.min.css" />
+
+        <title>Listado de Empleados </title>
+
+    </h:head>
+
+    <h:body class="nav-md bg-dark">
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col bg-dark">
+                    <div class="left_col scroll-view bg-dark">
+                        <div class="navbar bg-dark" style="border: 0;">
+                            <a href="../index.html"><h:graphicImage  library="images" name="twitter_header_photo_1.png" class="site_title" /></a>
+                                <br/>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <!-- menu profile quick info -->
+                        <!-- /menu profile quick info -->
+
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section font-style-title5">
+                                <h3>Menu</h3>
+                                <br />
+                                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-user-md"></i> Empleados <span class="fa fa-chevron-down"></span></a>
+                                        <h:form>
+                                            <ul class="nav child_menu">
+                                                <li><h:commandLink action="#{empleadosController.prepareCreate()}"><i class="fa fa-file-text-o"></i> Registrar</h:commandLink></li>
+                                                <li><h:commandLink action="#{empleadosController.prepareList()}"><i class="fa fa-list-ol"></i> Enumera</h:commandLink></li>
+                                            </ul>
+                                        </h:form>
+                                    </li>
+                                    <li><a><i class="fa fa-wheelchair"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
+                                        <h:form>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu"><a href="../pacientes/Create.xhtml"><i class="fa fa-file-text-o"></i> Registrar</a></li>
+                                                <li><a href="../pacientes/List.xhtml"><i class="fa fa-list-ol"></i> Enumera</a></li>
+                                            </ul>
+                                        </h:form>
+                                    </li>
+                                    <li><a><i class="fa fa-calendar"></i> Programación <span class="fa fa-chevron-down"></span></a>
+                                        <h:form>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu"><a href="../programacion/Create.xhtml"><i class="fa fa-file-text-o"></i> Registrar</a></li>
+                                                <li><a href="../programacion/List.xhtml"><i class="fa fa-list-ol"></i> Enumera</a></li>
+                                            </ul>
+                                        </h:form>
+                                    </li>
+                                    <li><a><i class="fa fa-stethoscope"></i> Asistencia <span class="fa fa-chevron-down"></span></a>
+                                        <h:form>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu"><a href="../asistencia/Create.xhtml"><i class="fa fa-file-text-o"></i> Registrar</a></li>
+                                                <li><a href="../asistencia/List.xhtml"><i class="fa fa-list-ol"></i> Enumera</a></li>
+                                            </ul>
+                                        </h:form>
+                                    </li>
+                                    <li><a><i class="fa fa-credit-card"></i> Pagos <span class="fa fa-chevron-down"></span></a>
+                                        <h:form>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu"><a href="../pagosAsistencia/Create.xhtml"><i class="fa fa-file-text-o"></i> Registrar</a></li>
+                                                <li><a href="../pagosAsistencia/List.xhtml"><i class="fa fa-list-ol"></i> Enumera</a></li>
+                                            </ul>
+                                        </h:form>
+                                    </li>
+                                    <li><a><i class="fa fa-hospital-o"></i> Tipos de Asistencias <span class="fa fa-chevron-down"></span></a>
+                                        <h:form>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu"><a href="../tipoAsistencia/Create.xhtml"><i class="fa fa-file-text-o"></i> Registrar</a></li>
+                                                <li><a href="../tipoAsistencia/List.xhtml"><i class="fa fa-list-ol"></i> Enumera</a></li>
+                                            </ul>
+                                        </h:form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /sidebar menu -->
+
+                        <!-- /menu footer buttons -->
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div class="top_nav">
+                    <div class="nav_menu fa-inverse bg-green">
+                        <div class="nav toggle nav_title bg-green">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <nav class="nav navbar-nav">
+                            <ul class=" navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                        <span class="fa-inverse glyphicon glyphicon-user font-style-title1" aria-hidden="true"> Usuario</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="../login/Create.xhtml"> Registrar Usuario</a></li>
+                                        <li><a href="../login/List.xhtml"> Enumera Usuarios</a></li>
+                                        <li><a href="../index.html"><i class="fa fa-sign-out pull-right"></i> Salir</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /top navigation -->
+
+                <!-- page content -->
+                <div class="right_col bg-dark" role="main">
+                    <div class="">
+                        <div class="page-title">
+                            <div class="title_left fa-inverse font-style-title3">
+                                <h3>Listado de Empleados</h3>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-12 col-sm-12 ">
+                            <div class="x_panel">
+                                <div class="x_title fa-inverse bg-green font-style-title2">
+                                    <br />
+                                    <h2>INFORMACIONES</h2>
+                                    <br />
+                                    <br />
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card-box table-responsive">
+                                                <h:dataTable id="datatable-buttons" styleClass="table table-striped table-bordered fa-inverse bg-dark" 
+                                                             value="#{empleadosController.items}" var="item" rules="all" style="width: 100%" >
+                                                    <h:column>
+                                                        <h:form>
+                                                            <f:facet name="header">
+                                                                <h:outputText value=" "/>
+                                                            </f:facet>
+                                                            <div class="btn-group">
+                                                                <h:commandButton class="btn btn-round btn-outline-info btn-sm fa-inverse " action="#{empleadosController.prepareView()}" value="Ver todo"/>
+                                                                <h:commandButton class="btn btn-round btn-outline-success btn-sm fa-inverse" action="#{empleadosController.prepareEdit()}" value="Actualizar"/>
+                                                            </div>
+                                                        </h:form>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Nombre"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.nombre}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Teléfono"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.telefono}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Especialidad"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.especialidad}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Correo Electrónico"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.email}"/>
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ln_solid col-md-12 col-sm-12 col-xs-12 form-group"></div>
+                                <h:form>
+                                    <div class="btn-group font-style-title2">
+                                        <h:commandButton class="btn btn-round btn btn-outline-success btn-sm " action="#{empleadosController.prepareCreate()}" value="Registrar"/>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer class=" bg-dark fa-inverse font-style-title1">
+                <div class="pull-right">
+                    ServSchedule
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+
+        <!-- jQuery -->
+        <h:outputScript name="vendors/jquery/dist/jquery.min.js"/>
+        <!-- Bootstrap -->
+        <h:outputScript name="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"/>
+        <!-- FastClick -->
+        <h:outputScript name="vendors/fastclick/lib/fastclick.js"/>
+        <!-- NProgress -->
+        <h:outputScript name="vendors/nprogress/nprogress.js"/>
+        <!-- iCheck -->
+        <h:outputScript name="vendors/iCheck/icheck.min.js"/>
+        <!-- Datatables -->
+        <h:outputScript name="vendors/datatables.net/js/jquery.dataTables.min.js"/>
+        <h:outputScript name="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"/>
+        <h:outputScript name="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"/>
+        <h:outputScript name="vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"/>
+        <h:outputScript name="vendors/datatables.net-buttons/js/buttons.colVis.min.js"/>
+        <h:outputScript name="vendors/datatables.net-buttons/js/buttons.flash.min.js"/>
+        <h:outputScript name="vendors/datatables.net-buttons/js/buttons.html5.min.js"/>
+        <h:outputScript name="vendors/datatables.net-buttons/js/buttons.print.min.js"/>
+        <h:outputScript name="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"/>
+        <h:outputScript name="vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"/>
+        <h:outputScript name="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"/>
+        <h:outputScript name="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"/>
+        <h:outputScript name="vendors/datatables.net-scroller/js/dataTables.scroller.min.js"/>
+        <h:outputScript name="vendors/jszip/dist/jszip.min.js"/>
+        <h:outputScript name="vendors/pdfmake/build/pdfmake.min.js"/>
+        <h:outputScript name="vendors/pdfmake/build/vfs_fonts.js"/>
+        <!-- Custom Theme Scripts -->
+        <h:outputScript name="build/js/custom.min.js"/>
+
+    </h:body>
+</html>
